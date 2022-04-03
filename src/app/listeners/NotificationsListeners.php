@@ -73,8 +73,8 @@ class NotificationsListeners extends Injectable
 
     public function beforeHandleRequest(Event $event, \Phalcon\Mvc\Application $application)
     {
-        $controller = ucwords($this->router->getControllerName());
-        $action = $this->router->getActionName();
+        $controller = ucwords($this->router->getControllerName()??'index');
+        $action = $this->router->getActionName()??'index';
 
         $aclFile = APP_PATH . '/security/acl.cache';
         //Check whether ACL data already exist
